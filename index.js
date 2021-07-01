@@ -13,12 +13,13 @@ function distanceFromHqInFeet(pickupLocation) {
   return Math.abs(distanceInBlocks) * 264;
 }
 function calculatesFarePrice(beginning, destination) {
-  let distanceInFeet = (beginning - destination) * 264;
+  let distanceInFeet = Math.abs(beginning - destination) * 264;
   let farePrice = Math.abs(distanceInFeet) * .02;
   if (distanceInFeet < 400){
       farePrice = 0;
-  } else if ( distanceInFeet >= 400 && distanceInFeetlearn <= 2000) {
-    return farePrice - (8.00);
+      return farePrice;
+  } else if ( distanceInFeet >= 400 && distanceInFeet <= 2000) {
+    return (distanceInFeet-400)*.02
   } else if (distanceInFeet >= 2000 && distanceInFeet <= 2500) {
     farePrice = 25;
     return farePrice;
@@ -26,5 +27,4 @@ function calculatesFarePrice(beginning, destination) {
       return 'cannot travel that far';
   }
 }
-console.log(calculatesFarePrice(43, 42));
 
